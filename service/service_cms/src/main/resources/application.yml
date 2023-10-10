@@ -1,0 +1,14 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: service-cms
+#  profiles:
+#    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wisdom?serverTimezone=GMT%2B8
+    username: root
+    password: 202333
+mybatis-plus:
+  mapper-locations: classpath:com/rjx/edu/mapper/xml/*.xml

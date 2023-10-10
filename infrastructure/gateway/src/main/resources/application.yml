@@ -1,0 +1,71 @@
+server:
+  port: 8222
+spring:
+  application:
+    name: gateway
+  #  profiles:
+  #    active: dev
+  #  datasource:
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    url: jdbc:mysql://localhost:3306/wisdom?serverTimezone=GMT%2B8
+  #    username: root
+  #    password: 202333
+  #  redis:
+  #    host: 192.168.88.135
+  #    port: 6379
+  #    database: 0
+  #    timeout: 1800000
+  #    lettuce:
+  #      pool:
+  #        max-active: 20
+  #        max-wait: 1
+  #        max-idle: 5
+  #        min-idle: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service-edu
+          uri: lb://service-edu
+          predicates:
+            - Path=/edu/**
+        - id: service-producer
+          uri: lb://service-producer
+          predicates:
+            - Path=/producer/**
+        - id: service-cms
+          uri: lb://service-cms
+          predicates:
+            - Path=/cms/**
+        - id: service-acl
+          uri: lb://service-acl
+          predicates:
+            - Path=/acl/**
+        - id: service-msm
+          uri: lb://service-msm
+          predicates:
+            - Path=/msm/**
+        - id: service-ucenter
+          uri: lb://service-ucenter
+          predicates:
+            - Path=/ucenter/**
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/order/**
+        - id: service-statistics
+          uri: lb://service-statistics
+          predicates:
+            - Path=/statistics/**
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+#mybatis-plus:
+#  mapper-locations: classpath:com/rjx/gateway/mapper/xml/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

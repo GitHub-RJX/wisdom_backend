@@ -1,0 +1,17 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: service-acl
+  #  profiles:
+  #    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wisdom?serverTimezone=GMT%2B8
+    username: root
+    password: 202333
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+mybatis-plus:
+  mapper-locations: classpath:com/rjx/acl/mapper/xml/*.xml

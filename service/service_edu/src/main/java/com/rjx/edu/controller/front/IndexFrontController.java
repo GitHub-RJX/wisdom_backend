@@ -7,7 +7,6 @@ import com.rjx.edu.service.EduCourseService;
 import com.rjx.edu.service.EduTeacherService;
 import com.rjx.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +15,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/edu/front")
-@CrossOrigin
-public class FrontController {
+//@CrossOrigin
+public class IndexFrontController {
     @Autowired
     private EduCourseService eduCourseService;
     @Autowired
@@ -27,7 +26,7 @@ public class FrontController {
     public Result getAllCourse() {
         LambdaQueryWrapper<EduCourse> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(EduCourse::getId);
-        queryWrapper.last("limit 8");
+        queryWrapper.last("limit 4");
         List<EduCourse> eduCourseList = eduCourseService.list(queryWrapper);
         return Result.success(eduCourseList);
     }

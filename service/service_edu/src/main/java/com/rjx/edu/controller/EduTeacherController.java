@@ -31,7 +31,7 @@ public class EduTeacherController {
         return Result.success(eduTeacher);
     }
 
-    @GetMapping("/page/{current}/{size}")
+    @PostMapping("/page/{current}/{size}")
     public Result getByPage(@PathVariable Long current, @PathVariable Long size, @RequestBody EduTeacher eduTeacher) {
         Page<EduTeacher> eduTeacherPage = new Page<>(current, size);
         LambdaQueryWrapper<EduTeacher> queryWrapper = new LambdaQueryWrapper<>();

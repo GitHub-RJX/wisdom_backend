@@ -14,8 +14,8 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 @Data
-//@EqualsAndHashCode(callSuper = false)
-//@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 @ApiModel(value = "Teacher对象", description = "讲师")
 public class EduTeacher implements Serializable {
 

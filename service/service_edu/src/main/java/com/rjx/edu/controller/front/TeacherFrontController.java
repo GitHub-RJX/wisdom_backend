@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/edu/front/teacher")
-@CrossOrigin
+//@CrossOrigin
 public class TeacherFrontController {
     @Autowired
     private EduTeacherService eduTeacherService;
@@ -32,16 +32,14 @@ public class TeacherFrontController {
         eduTeacherService.page(eduTeacherPage, queryWrapper);
         Map<String, Object> map = new HashMap<>();
         List<EduTeacher> eduTeacherList = eduTeacherPage.getRecords();
-        long current1 = eduTeacherPage.getCurrent();
         long pages = eduTeacherPage.getPages();
-        long size1 = eduTeacherPage.getSize();
         long total = eduTeacherPage.getTotal();
         boolean hasNext = eduTeacherPage.hasNext();
         boolean hasPrevious = eduTeacherPage.hasPrevious();
         map.put("eduTeacherList", eduTeacherList);
-        map.put("current", current1);
+        map.put("current", current);
         map.put("pages", pages);
-        map.put("size", size1);
+        map.put("size", size);
         map.put("total", total);
         map.put("hasNext", hasNext);
         map.put("hasPrevious", hasPrevious);

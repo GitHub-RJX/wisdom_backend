@@ -14,10 +14,10 @@ import java.util.List;
 public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner> implements CrmBannerService {
 
     @Override
-    @Cacheable(key = "'crmBannerList'",value = "AAABBBCCC")
+    @Cacheable(key = "'crmBannerList'", value = "AAABBBCCC")
     public List<CrmBanner> getAll() {
         LambdaQueryWrapper<CrmBanner> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.orderByDesc(CrmBanner::getId);
+        queryWrapper.orderByAsc(CrmBanner::getSort);
         queryWrapper.last("limit 2");
         List<CrmBanner> crmBannerList = baseMapper.selectList(queryWrapper);
         return crmBannerList;

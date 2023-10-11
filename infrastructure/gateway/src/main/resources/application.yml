@@ -62,10 +62,3 @@ spring:
           uri: lb://service-statistics
           predicates:
             - Path=/statistics/**
-#  jackson:
-#    date-format: yyyy-MM-dd HH:mm:ss
-#    time-zone: GMT+8
-#mybatis-plus:
-#  mapper-locations: classpath:com/rjx/gateway/mapper/xml/*.xml
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

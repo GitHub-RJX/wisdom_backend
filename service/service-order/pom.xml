@@ -55,5 +55,10 @@
             <artifactId>delegating-spring-request-context</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+            <version>3.5.3</version>
+        </dependency>
     </dependencies>
 </project>

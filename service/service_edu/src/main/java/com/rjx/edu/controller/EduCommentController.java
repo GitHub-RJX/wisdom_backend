@@ -1,6 +1,5 @@
 package com.rjx.edu.controller;
 
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 

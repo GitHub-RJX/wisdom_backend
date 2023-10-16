@@ -1,0 +1,27 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: service-vod
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wisdom?serverTimezone=GMT%2B8
+    username: root
+    password: 202333
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+mybatis-plus:
+  mapper-locations: classpath:com/rjx/edu/mapper/xml/*.xml
+aliyun:
+  vod:
+    file:
+      keyid: LTAI4G86y9kLCohNkGSEJHTW
+      keysecret: DOVtDVZ80ThVkMtQUlMBFKGcwr6QOI

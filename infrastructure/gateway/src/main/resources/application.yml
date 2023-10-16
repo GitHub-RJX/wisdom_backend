@@ -3,24 +3,6 @@ server:
 spring:
   application:
     name: gateway
-  #  profiles:
-  #    active: dev
-  #  datasource:
-  #    driver-class-name: com.mysql.cj.jdbc.Driver
-  #    url: jdbc:mysql://localhost:3306/wisdom?serverTimezone=GMT%2B8
-  #    username: root
-  #    password: 202333
-  #  redis:
-  #    host: 192.168.88.135
-  #    port: 6379
-  #    database: 0
-  #    timeout: 1800000
-  #    lettuce:
-  #      pool:
-  #        max-active: 20
-  #        max-wait: 1
-  #        max-idle: 5
-  #        min-idle: 0
   cloud:
     nacos:
       discovery:
@@ -34,10 +16,14 @@ spring:
           uri: lb://service-edu
           predicates:
             - Path=/edu/**
-        - id: service-producer
-          uri: lb://service-producer
+        - id: service-oss
+          uri: lb://service-oss
           predicates:
-            - Path=/producer/**
+            - Path=/oss/**
+        - id: service-vod
+          uri: lb://service-vod
+          predicates:
+            - Path=/vod/**
         - id: service-cms
           uri: lb://service-cms
           predicates:

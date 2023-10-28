@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Result {
-    private Integer code;//响应码：1->成功 0->失败
+    private Integer code;//响应码：20000->成功 20001->失败
     private String msg;
     private Object data;
 

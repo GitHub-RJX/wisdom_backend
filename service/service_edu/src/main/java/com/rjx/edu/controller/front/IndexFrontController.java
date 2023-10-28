@@ -26,7 +26,7 @@ public class IndexFrontController {
     public Result getAllCourse() {
         LambdaQueryWrapper<EduCourse> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(EduCourse::getId);
-        queryWrapper.last("limit 4");
+        queryWrapper.last("limit 8");
         List<EduCourse> eduCourseList = eduCourseService.list(queryWrapper);
         return Result.success(eduCourseList);
     }
@@ -35,7 +35,7 @@ public class IndexFrontController {
     public Result getAllTeacher() {
         LambdaQueryWrapper<EduTeacher> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(EduTeacher::getId);
-        queryWrapper.last("limit 4");
+        queryWrapper.last("limit 8");
         List<EduTeacher> eduTeacherList = eduTeacherService.list(queryWrapper);
         return Result.success(eduTeacherList);
     }

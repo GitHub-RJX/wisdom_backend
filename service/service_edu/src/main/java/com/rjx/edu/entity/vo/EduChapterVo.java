@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class EduChapterVo {
+
     private String id;
     private String title;
     private List<EduVideoVo> children = new ArrayList<>();

@@ -9,10 +9,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
-/**
- * @author helen
- * @since 2019/10/16
- */
 public class JwtUtils {
 
     public static final long EXPIRE = 1000 * 60 * 60 * 24;
@@ -75,8 +71,7 @@ public class JwtUtils {
      */
     public static String getMemberIdByJwtToken(HttpServletRequest request) {
         String jwtToken = request.getHeader("token");
-        if (StringUtils.isEmpty(jwtToken))
-            return "";
+        if (StringUtils.isEmpty(jwtToken)) return "";
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
         Claims claims = claimsJws.getBody();
         return (String) claims.get("id");

@@ -19,7 +19,7 @@ public class EduSubjectController {
     private EduSubjectService eduSubjectService;
 
     @PostMapping("/save")
-    public Result save(MultipartFile multipartFile) throws IOException {
+    public Result save(MultipartFile multipartFile){
         eduSubjectService.saveEduSubject(multipartFile, eduSubjectService);
         return Result.success();
     }

@@ -22,8 +22,13 @@ import java.util.List;
 public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubject> implements EduSubjectService {
 
     @Override
-    public void saveEduSubject(MultipartFile multipartFile, EduSubjectService eduSubjectService) throws IOException {
-        InputStream inputStream = multipartFile.getInputStream();
+    public void saveEduSubject(MultipartFile multipartFile, EduSubjectService eduSubjectService) {
+        InputStream inputStream = null;
+        try {
+            inputStream = multipartFile.getInputStream();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         EasyExcel.read(inputStream, EduSubject.class, new EduSubjectListener()).sheet().doRead();
     }
 

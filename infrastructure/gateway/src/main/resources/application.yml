@@ -31,7 +31,7 @@ spring:
         - id: service-acl
           uri: lb://service-acl
           predicates:
-            - Path=/acl/**
+            - Path=/admin/**
         - id: service-msm
           uri: lb://service-msm
           predicates:

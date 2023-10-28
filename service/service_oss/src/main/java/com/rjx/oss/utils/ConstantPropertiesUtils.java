@@ -22,14 +22,14 @@ public class ConstantPropertiesUtils implements InitializingBean {
     private String bucketName;
 
     //定义公开静态常量
-    public static String END_POIND;
+    public static String END_POINT;
     public static String ACCESS_KEY_ID;
     public static String ACCESS_KEY_SECRET;
     public static String BUCKET_NAME;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        END_POIND = endpoint;
+        END_POINT = endpoint;
         ACCESS_KEY_ID = keyId;
         ACCESS_KEY_SECRET = keySecret;
         BUCKET_NAME = bucketName;

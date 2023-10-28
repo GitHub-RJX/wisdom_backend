@@ -28,7 +28,7 @@ public class EduCourseInfo {
     @ApiModelProperty(value = "课程销售价格，设置为0则可免费观看")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "总课时")
+    @ApiModelProperty(value = "总课时数")
     private Integer lessonNum;
 
     @ApiModelProperty(value = "课程封面图片路径")

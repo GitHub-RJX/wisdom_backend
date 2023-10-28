@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface EduSubjectService extends IService<EduSubject> {
 
-    void saveEduSubject(MultipartFile multipartFile,EduSubjectService eduSubjectService) throws IOException;
+    void saveEduSubject(MultipartFile multipartFile,EduSubjectService eduSubjectService);
 
     List<OneEduSubject> getAll();
 }

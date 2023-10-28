@@ -25,6 +25,6 @@ aliyun:
   oss:
     file:
       endpoint: oss-cn-beijing.aliyuncs.com
-      keyid: LTAI4G86y9kLCohNkGSEJHTW
-      keysecret: DOVtDVZ80ThVkMtQUlMBFKGcwr6QOI
-      bucketname: eduguli1010
+      keyid: LTAI5tCZVBGzLkfCrmrZKXFC
+      keysecret: eu4B5mnS14BbEGuqKTHNWj1AEehNCX
+      bucketname: rjx-projects

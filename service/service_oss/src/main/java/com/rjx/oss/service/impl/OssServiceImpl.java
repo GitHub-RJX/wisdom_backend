@@ -16,9 +16,9 @@ public class OssServiceImpl implements OssService {
 
     //上传头像到oss
     @Override
-    public String uploadFileAvatar(MultipartFile file) {
+    public String uploadAvatar(MultipartFile file) {
         // 工具类获取值
-        String endpoint = ConstantPropertiesUtils.END_POIND;
+        String endpoint = ConstantPropertiesUtils.END_POINT;
         String accessKeyId = ConstantPropertiesUtils.ACCESS_KEY_ID;
         String accessKeySecret = ConstantPropertiesUtils.ACCESS_KEY_SECRET;
         String bucketName = ConstantPropertiesUtils.BUCKET_NAME;
@@ -29,21 +29,23 @@ public class OssServiceImpl implements OssService {
 
             //获取上传文件输入流
             InputStream inputStream = file.getInputStream();
-            //获取文件名称
-            String fileName = file.getOriginalFilename();
 
+            //获取原始文件名称
+            String originalFilename = file.getOriginalFilename();
+            //获取原始文件拓展名
+            String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
             //1 在文件名称里面添加随机唯一的值
-            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-            // yuy76t5rew01.jpg
-            fileName = uuid + fileName;
-
+            String uuid = UUID.randomUUID().toString();
+            //拼接 fdgvzdsrfgvbgxdzgfvxdg01.jpg
+            String filename = uuid + extension;
             //2 把文件按照日期进行分类
-            //获取当前日期
-            //   2019/11/12
-            String datePath = new DateTime().toString("yyyy/MM/dd");
-            //拼接
-            //  2019/11/12/ewtqr313401.jpg
-            fileName = datePath + "/" + fileName;
+            //获取当前日期 2023/10/12
+//            String datePath = new DateTime().toString("yyyy/MM/dd");
+            //拼接 2023/10/12/fdgvzdsrfgvbgxdzgfvxdg01.jpg
+//            String fileName = datePath + "/" + filename;
+            //3 把文件按照项目进行分类
+            //拼接 wisdom/2023/10/12/fdgvzdsrfgvbgxdzgfvxdg01.jpg
+            String fileName = "wisdom/" + filename;
 
             //调用oss方法实现上传
             //第一个参数  Bucket名称
@@ -51,13 +53,14 @@ public class OssServiceImpl implements OssService {
             //第三个参数  上传文件输入流
             ossClient.putObject(bucketName, fileName, inputStream);
 
-            // 关闭OSSClient。
-            ossClient.shutdown();
-
             //把上传之后文件路径返回
             //需要把上传到阿里云oss路径手动拼接出来
-            //  https://edu-guli-1010.oss-cn-beijing.aliyuncs.com/01.jpg
+            //  https://rjx-projects.oss-cn-beijing.aliyuncs.com/wisdom/1.jpg
             String url = "https://" + bucketName + "." + endpoint + "/" + fileName;
+
+            // 关闭OSSClient
+            ossClient.shutdown();
+
             return url;
         } catch (Exception e) {
             e.printStackTrace();

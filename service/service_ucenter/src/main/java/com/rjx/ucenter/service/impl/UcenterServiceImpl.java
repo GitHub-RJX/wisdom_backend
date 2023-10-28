@@ -34,8 +34,7 @@ public class UcenterServiceImpl extends ServiceImpl<UcenterMapper, Ucenter> impl
         ucenter.setMobile(mobile);
         ucenter.setNickname(nickname);
         ucenter.setPassword(MD5.encrypt(password));
-        ucenter.setAvatar("https://edu-longyang.oss-cn-beijing.aliyuncs.com/fa104ef58c4e5bc4270d911da1d1b34d.jpg");
-//        ucenter.setAvatar("http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoj0hHXhgJNOTSOFsS4uZs8x1ConecaVOB8eIl115xmJZcT4oCicvia7wMEufibKtTLqiaJeanU2Lpg3w/132");
+        ucenter.setAvatar("https://rjx-projects.oss-cn-beijing.aliyuncs.com/wisdom/avatar_user");
         baseMapper.insert(ucenter);
     }
 

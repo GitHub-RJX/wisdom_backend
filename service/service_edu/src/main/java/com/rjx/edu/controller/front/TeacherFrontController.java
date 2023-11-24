@@ -46,6 +46,29 @@ public class TeacherFrontController {
         return Result.success(map);
     }
 
+    @GetMapping("/getByLevel/{current}/{size}/{level}")
+    public Result getByLevel(@PathVariable Long current, @PathVariable Long size, @PathVariable Integer level) {
+        Page<EduTeacher> eduTeacherPage = new Page<>(current, size);
+        LambdaQueryWrapper<EduTeacher> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(EduTeacher::getIsDeleted, 0);
+        queryWrapper.eq(EduTeacher::getLevel, level);
+        eduTeacherService.page(eduTeacherPage, queryWrapper);
+        Map<String, Object> map = new HashMap<>();
+        List<EduTeacher> eduTeacherList = eduTeacherPage.getRecords();
+        long pages = eduTeacherPage.getPages();
+        long total = eduTeacherPage.getTotal();
+        boolean hasNext = eduTeacherPage.hasNext();
+        boolean hasPrevious = eduTeacherPage.hasPrevious();
+        map.put("eduTeacherList", eduTeacherList);
+        map.put("current", current);
+        map.put("pages", pages);
+        map.put("size", size);
+        map.put("total", total);
+        map.put("hasNext", hasNext);
+        map.put("hasPrevious", hasPrevious);
+        return Result.success(map);
+    }
+
     @GetMapping("/getById/{id}")
     public Result getById(@PathVariable String id) {
         EduTeacher eduTeacher = eduTeacherService.getById(id);

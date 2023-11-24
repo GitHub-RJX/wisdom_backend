@@ -51,7 +51,7 @@ public class EduTeacherController {
         queryWrapper.eq(EduTeacher::getIsDeleted, 0)
                 .like(eduTeacher.getName() != null && eduTeacher.getName().length() != 0, EduTeacher::getName, eduTeacher.getName())
                 .eq(eduTeacher.getLevel() != null, EduTeacher::getLevel, eduTeacher.getLevel())
-                .orderByDesc(EduTeacher::getLevel).orderByDesc(EduTeacher::getSort);
+                .orderByDesc(EduTeacher::getSort);
         eduTeacherService.page(eduTeacherPage, queryWrapper);
         List<EduTeacher> eduTeacherList = eduTeacherPage.getRecords();
         long total = eduTeacherPage.getTotal();

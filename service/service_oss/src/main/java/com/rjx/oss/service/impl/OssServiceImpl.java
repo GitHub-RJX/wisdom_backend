@@ -53,14 +53,13 @@ public class OssServiceImpl implements OssService {
             //第三个参数  上传文件输入流
             ossClient.putObject(bucketName, fileName, inputStream);
 
+            // 关闭OSSClient
+            ossClient.shutdown();
+
             //把上传之后文件路径返回
             //需要把上传到阿里云oss路径手动拼接出来
             //  https://rjx-projects.oss-cn-beijing.aliyuncs.com/wisdom/1.jpg
             String url = "https://" + bucketName + "." + endpoint + "/" + fileName;
-
-            // 关闭OSSClient
-            ossClient.shutdown();
-
             return url;
         } catch (Exception e) {
             e.printStackTrace();

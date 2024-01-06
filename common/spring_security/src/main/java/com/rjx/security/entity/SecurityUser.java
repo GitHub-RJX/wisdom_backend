@@ -38,7 +38,6 @@ public class SecurityUser implements UserDetails {
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(permissionValue);
             authorities.add(authority);
         }
-
         return authorities;
     }
 
